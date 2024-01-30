@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: turquoise;
+      text-align: center;
+      padding: 20px;
+    }
+
+    button {
+      padding: 10px;
+      margin: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: lightblue;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    label {
+      font-size: 18px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+    }
+  </style>
+  <title>Your Page Title</title>
+</head>
+<body>
+
+  <h1>Welcome to Your Game!</h1>
+
+  <button onclick="startFullGame()" id="fullGameBtn">Full Game</button>
+  <button onclick="startMiniGame()" id="miniGameBtn">Mini Game</button>
+
+  <form id="nameForm" onsubmit="redirectToAnotherPage(); return false;">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    function startFullGame() {
+      // Add your code to start the full game here
+      // For now, let's just change the button color to indicate activation
+      document.getElementById("fullGameBtn").style.backgroundColor = "yellow";
+    }
+
+    function startMiniGame() {
+      // Add your code to start the mini game here
+      // For now, let's just change the button color to indicate activation
+      document.getElementById("miniGameBtn").style.backgroundColor = "yellow";
+    }
+
+    function redirectToAnotherPage() {
+      // Add your code to handle form submission and redirection
+      var name = document.getElementById("name").value;
+      var formType;
+
+      if (document.getElementById("fullGameBtn").style.backgroundColor === "yellow") {
+        // If Full Game button is activated
+        formType = "fullgame";
+      } else if (document.getElementById("miniGameBtn").style.backgroundColor === "yellow") {
+        // If Mini Game button is activated
+        formType = "minigame";
+      }
+
+      // You can replace the URLs with the desired destinations
+      if (formType === "fullgame") {
+        window.location.href = "fullgame.html?name=" + encodeURIComponent(name);
+      } else if (formType === "minigame") {
+        window.location.href = "minigame.html?name=" + encodeURIComponent(name);
+      }
+    }
+  </script>
+
+</body>
+</html>
